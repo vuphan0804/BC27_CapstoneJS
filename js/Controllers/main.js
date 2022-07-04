@@ -1,14 +1,15 @@
 'use strict';
-import Product from '../Models/Product';
-import { getProductsAPI } from '../Services/productAPI';
+import Product from '../Models/Product.js';
+import {getProductsAPI} from '../Services/productAPI.js';
+import display from './display.js'
 init();
 function init() {
   getProductsAPI().then((result) => {
     console.log(result.data);
     const products = result.data;
-    products.forEach(() => {
-      let product = products[i];
-      products[i] = new Product(
+    for ( let product of products){
+      
+      product = new Product(
         product.name,
         product.price,
         product.price,
@@ -19,7 +20,8 @@ function init() {
         product.desc,
         product.type
       );
-    });
+    
     display(products);
+  }
   });
 }
