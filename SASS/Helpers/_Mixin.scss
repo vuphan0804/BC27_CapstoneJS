@@ -1,0 +1,13 @@
+@mixin background-image  {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@mixin position-center {
+    position : absolute ; 
+    left : 50% ; 
+    top : 50%;
+    transform : translate(-50% , -50%)
+
+}

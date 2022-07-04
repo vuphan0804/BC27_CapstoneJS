@@ -1,0 +1,41 @@
+.landing {
+  background: url('../../Images/background.png');
+  object-fit: cover;
+  min-height: 1030px;
+  @include background-image;
+  background-position: 0% 0%;
+  position: relative;
+  .container {
+    width: 1140px;
+
+    .landing-carousel {
+      display: flex;
+      padding-top: 50px;
+      .header {
+        // padding: 30px;
+        margin-top: 45px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        & h1 {
+          font-size: 4.5rem;
+          font-weight: 700;
+          color: $white;
+          margin: 0;
+        }
+
+        & h3 {
+          margin-top: 20px;
+          color: $white;
+          font-size: 1.125rem;
+          font-weight: 300;
+        }
+      }
+      .phone-img {
+        margin-bottom: 150px;
+      }
+      .phone-img {
+      }
+    }
+  }
+}

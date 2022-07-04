@@ -1,0 +1,56 @@
+.cards {
+  position: absolute;
+  bottom: 100px;
+  margin: 0px -15px;
+  .container {
+    .cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 30px;
+      .cards-col {
+        padding: 15px;
+        background-color: $white;
+        .cards-col-wrapper {
+          padding: 15px;
+          margin-top: 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          text-align: left;
+          & h2 {
+            color: $dark-blue;
+            font-weight: 700;
+            font-size: 2.25rem;
+          }
+          & p {
+            margin-top: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 1rem;
+          }
+          & i {
+            width: 45px;
+            height: 45px;
+            margin: 20px auto 0 0;
+            font-size: 2.3rem;
+            color: $dark-blue;
+          }
+        }
+      }
+      .col2 {
+        .cards-col-wrapper {
+          & h2 {
+            color: $purple;
+          }
+        }
+      }
+      .col3 {
+        .cards-col-wrapper {
+          & h2 {
+            color: $pink;
+          }
+        }
+      }
+    }
+  }
+}
