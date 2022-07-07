@@ -1,0 +1,14 @@
+
+.products-header {
+    text-align : center;
+    & h2 {
+        text-align : center; 
+        font-size : 3rem;
+        text-decoration : uppercase;
+        font-weight : 700;
+        background-image : linear-gradient(to right, $dark-blue, $pink);
+        display : inline-block;
+        -webkit-background-clip: text;
+        color : transparent;
+    }
+}

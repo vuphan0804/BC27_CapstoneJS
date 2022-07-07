@@ -6,4 +6,13 @@ function getProductsAPI() {
     method: 'GET',
   });
 }
-export { getProductsAPI };
+function getProductsTypeAPI (type) {
+  return axios ({
+    url : baseUrl,
+    method : "GET",
+    params : {
+      name : type,
+    }
+  })
+}
+export { getProductsAPI, getProductsTypeAPI };
