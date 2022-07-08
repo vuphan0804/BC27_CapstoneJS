@@ -25,7 +25,7 @@ function display (products) {
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-              <a class="btn btn-outline-dark mt-auto" href="#"
+              <a class="btn btn-outline-dark mt-auto add-to-cart" data-type = "add"
                 >View options</a
               >
             </div>
