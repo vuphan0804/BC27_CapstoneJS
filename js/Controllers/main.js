@@ -1,6 +1,6 @@
 'use strict';
 import Product from '../Models/Product.js';
-import {getProductsAPI} from '../Services/productAPI.js';
+import {getProductsAPI, getProductsDetailAPI} from '../Services/productAPI.js';
 import display from './display.js'
 import {getProductsTypeAPI} from '../Services/productAPI.js'
 init();
@@ -36,6 +36,7 @@ init();
       const products = result.data ; 
       for ( let product of products) {
         product = new Product (
+          product.id,
           product.name,
           product.price,
           product.price,
@@ -52,36 +53,66 @@ init();
     if (productType.value === 'Chọn loại sản phẩm') return init ()
     
   }) ; 
-  
-  let products = [] ;
-  document.querySelector('#products-row').addEventListener('click' , handleClick) ; 
-  function handleClick (event) {
-    const type = event.target.getAttribute('data-type')
-    if (type === 'add') {
-      cartNumbers () ; 
-      console.log ('clicked')
-    }
-  }
-  function onLoadCartNumbers () {
-    let productNumbers = localStorage.getItem('cartNumbers')
-    if (productNumbers) {
-      document.querySelector('.badge').textContent = productNumbers
-    }
-  }
-  function cartNumbers () {
-    let productNumbers = localStorage.getItem('cartNumbers') ; 
-    console.log (productNumbers)
-    productNumbers = parseInt(productNumbers);
-    if (productNumbers ) {
-      localStorage.setItem ('cartNumbers', productNumbers + 1 ) ; 
-      document.querySelector('.badge').textContent = productNumbers + 1
-    } else {
-      localStorage.setItem('cartNumbers', 1) ; 
-      document.querySelector('.badge').textContent = 1
-    }
-  }
-  onLoadCartNumbers ()
+  // ===================================== Increment Decrement updateCartQuantity ============================================
+let carts = []
 
+document.querySelector('#products-row').addEventListener('click' , handleClick) ; 
+function handleClick (event) {
+  let type = event.target.getAttribute('data-type');
+  let  id = event.target.getAttribute('data-id') ; 
+  if (type === 'add') {
+    cartNumbers () ; 
+    console.log ('clicked')
+  } 
+  if (type === 'increase') {
+    increment (id)
+  }
+  if ( type === 'decrease') {
+    decrement (id)
+  }
+}
+
+const increment = (productId) => {
+  getProductsDetailAPI(productId).then(() => {
+    let search = carts.find((existProduct) => existProduct.id === productId) 
+    if (search === undefined) {
+      carts.push({
+        id : productId , 
+        quantity : 1,
+      })
+    } else {
+      search.quantity += 1 ; 
+    }
+    updateQuantity(productId)
+  })
+ 
+}
+const decrement = (productId) => {
+  getProductsDetailAPI(productId).then(() => {
+    let search = carts.find((existProduct) => existProduct.id === productId) 
+    if (search.quantity === 0) { return }
+    else {
+      search.quantity -= 1 ; 
+    }
+    updateQuantity(productId)
+  })
+}
+const updateQuantity = (productId) => {
+  let search = carts.find((existProduct) => existProduct.id === productId)
+  document.getElementById(`span${productId}`).innerHTML = search.quantity
+  cartQuantity()
+}
+
+let cartQuantity = () => {
+  let cartIcon = document.querySelector('#cartAmount');
+  let cartCalculation = carts
+    .map((cartItem) => cartItem.quantity)
+    .reduce((previousNumber, nextNumber) => previousNumber + nextNumber);
+  cartIcon.textContent = cartCalculation;
+
+  // console.log(carts);
+};
+  // ===================================== Increment Decrement updateCartQuantity End ==========================================   
   
 
 

@@ -25,9 +25,19 @@ function display (products) {
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-              <a class="btn btn-outline-dark mt-auto add-to-cart" data-type = "add"
+              
+
+            <a class="btn btn-outline-dark mt-auto add-to-cart" data-type = "add"
                 >View options</a
               >
+              
+              <div class="qty mt-5">
+                <span class="minus bg-dark" data-id = "${product.id}" data-type = "decrease">-</span>
+                <span id = "span${product.id}"> 0 </span>
+                <span class="plus bg-dark" data-id = "${product.id}" data-type = "increase">+</span>
+              </div>
+
+          
             </div>
           </div>
         </div>

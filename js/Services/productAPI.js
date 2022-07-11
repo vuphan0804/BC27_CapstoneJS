@@ -6,6 +6,12 @@ function getProductsAPI() {
     method: 'GET',
   });
 }
+function getProductsDetailAPI(productId) {
+  return axios({
+    url: `${baseUrl}/${productId}`,
+    method: 'GET',
+  });
+}
 function getProductsTypeAPI (type) {
   return axios ({
     url : baseUrl,
@@ -15,4 +21,4 @@ function getProductsTypeAPI (type) {
     }
   })
 }
-export { getProductsAPI, getProductsTypeAPI };
+export { getProductsAPI, getProductsTypeAPI, getProductsDetailAPI};
